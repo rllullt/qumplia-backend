@@ -16,9 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+
+from apps.users import views
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api', include(router.urls)),
     # Browsable API, REST’s login and logout views
     path('api-auth/', include('rest_framework.urls')),
+    path('api/campaigns/', include('apps.campaigns.urls')),
+    # path('api/', include('apps.compliance_core.urls'), name='compliance_core'),
 ]
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
