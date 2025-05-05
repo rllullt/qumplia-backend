@@ -156,8 +156,10 @@ REST_FRAMEWORK = {
 
 # CORS settings (fixed for accepting requests from frontend)
 CORS_ALLOWED_ORIGINS = [
+    "http://localhost",
+    "http://localhost:80",
     "http://localhost:5173",
-    "http://qumplia-front:80",
+    # "http://qumplia-frontend:80",
 ]
 
 MEDIA_URL = '/media/'
