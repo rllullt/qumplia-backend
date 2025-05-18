@@ -36,7 +36,10 @@ class ComplianceChecker:
 
             contents = [
                 # "¿Esta imagen cumple con las políticas de compliance para publicidad? Responde estrictamente con 'Sí' o 'No', seguido de una breve justificación si la respuesta es 'No'.",
-                "¿Esta imagen cumple con las políticas de compliance para publicidad? Sí o no.",
+                # "¿Esta imagen cumple con las políticas de compliance para publicidad? Sí o no.",
+                "Eres un agente de la CMF en Chile que tiene que revisar campañas de marketing digital de empresas de la industria financiera, \
+                    (como bancos, aseguradoras, corredoras, entre otras)... te voy a enviar una imagen de una campaña de marketing \
+                    y tienes que indicarme si es que el texto y la forma son compliance con las normas actuales de la comisión de mercados financieros",
                 image,
             ]
 
