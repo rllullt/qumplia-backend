@@ -64,7 +64,7 @@ class CampaignViewSet(viewsets.ModelViewSet):
             description=description,
             created_by=created_by,
             status=campaign_result.get('status', 'pending'),
-            reject_reason=campaign_result.get('reason', ''),
+            reason=campaign_result.get('reason', ''),
         )
         new_campaign.save()
         # Save the image to the campaign

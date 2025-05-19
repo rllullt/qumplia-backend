@@ -21,9 +21,9 @@ class Campaign(models.Model):
         default='pending',
         verbose_name='Status'
     )
-    reject_reason = models.TextField(
+    reason = models.TextField(
         blank=True,
-        verbose_name='Reason for Rejection'
+        verbose_name='Reason for Approval/Rejection'
     )
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
