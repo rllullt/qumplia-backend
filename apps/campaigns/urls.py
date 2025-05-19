@@ -1,6 +1,10 @@
-from django.urls import path
-from .views import CampaignImageUploadView
+from django.urls import path, include
+from rest_framework import routers
+from .views import CampaignViewSet
+
+router = routers.DefaultRouter()
+router.register(r'', CampaignViewSet, basename='campaign')
 
 urlpatterns = [
-    path('new/', CampaignImageUploadView.as_view(), name='campaign-image-upload'),
+    path('', include(router.urls)),
 ]
