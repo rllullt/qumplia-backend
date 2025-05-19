@@ -14,7 +14,7 @@ class CampaignViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows campaigns to be viewed or edited.
     """
-    queryset = Campaign.objects.all()
+    queryset = Campaign.objects.all().order_by('-creation_date')
     serializer_class = CampaignSerializer
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
