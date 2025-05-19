@@ -39,7 +39,8 @@ class ComplianceChecker:
                 # "¿Esta imagen cumple con las políticas de compliance para publicidad? Sí o no.",
                 "Eres un agente de la CMF en Chile que tiene que revisar campañas de marketing digital de empresas de la industria financiera, \
                     (como bancos, aseguradoras, corredoras, entre otras)... te voy a enviar una imagen de una campaña de marketing \
-                    y tienes que indicarme si es que el texto y la forma son compliance con las normas actuales de la comisión de mercados financieros",
+                    y tienes que indicarme si es que el texto y la forma son compliance con las normas actuales de la comisión de mercados financieros. \
+                    En la conlusión, responde estrictamente con 'Sí', 'No' o 'Pendiente', seguido de la justificación de tu respuesta.",
                 image,
             ]
 
@@ -68,10 +69,13 @@ class ComplianceChecker:
 
             if 'Sí' in gemini_reply:
                 return_dict['status'] = 'Aprobado'
-                return_dict['reason'] = 'Cumple con los requisitos según Gemini.'
+                return_dict['reason'] = gemini_reply
+            elif 'Pendiente' in gemini_reply:
+                return_dict['status'] = 'Pendiente'
+                return_dict['reason'] = gemini_reply
             else:
                 return_dict['status'] = 'Rechazado'
-                return_dict['reason'] = 'No cumple con los requisitos según Gemini.'
+                return_dict['reason'] = gemini_reply
             return return_dict
 
         except Exception as e:
