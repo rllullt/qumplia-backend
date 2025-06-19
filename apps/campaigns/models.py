@@ -54,6 +54,9 @@ class CampaignImage(models.Model):
     """
     Model representing an image associated with a marketing campaign.
     """
+    # Django creates a related manager (administrador inverso) for the ForeignKey field
+    # This allows access to all images related to a campaign using campaign_instance.campaignimage_set.all()
+    # related_name='images' allows us to access the images using campaign_instance.images.all() instead
     campaign = models.ForeignKey(Campaign, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='campaign_images/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
