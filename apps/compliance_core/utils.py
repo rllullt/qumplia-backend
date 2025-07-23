@@ -68,13 +68,13 @@ class ComplianceChecker:
             }
 
             if 'Sí' in gemini_reply:
-                return_dict['status'] = 'Aprobado'
+                return_dict['status'] = 'approved'
                 return_dict['reason'] = gemini_reply
             elif 'Pendiente' in gemini_reply:
-                return_dict['status'] = 'Pendiente'
+                return_dict['status'] = 'pending'
                 return_dict['reason'] = gemini_reply
             else:
-                return_dict['status'] = 'Rechazado'
+                return_dict['status'] = 'rejected'
                 return_dict['reason'] = gemini_reply
             return return_dict
 
